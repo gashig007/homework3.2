@@ -2,7 +2,7 @@ package com.company;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitException {
         Boolean remainder = false;
         BankAccount bankAccount = new BankAccount();
         LimitException limitException = null;
@@ -15,8 +15,9 @@ public class Main {
                     limitException = new LimitException("На вашем счету недостаточно денег ", bankAccount.withDraw(6000));
                 }
             } catch (LimitException limitException1) {
+                System.out.println("Ваш счет: " + bankAccount.getAmount());
                 limitException1.printStackTrace();
-                if (limitException1.getRemainingAmount() < 6000) {
+                if (bankAccount.getAmount() < 6000) {
                     System.out.println("Ваш счет: " + limitException);
                     break;
                 }
