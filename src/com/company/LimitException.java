@@ -9,6 +9,9 @@ public class LimitException extends Exception{
     }
 
     public Double getRemainingAmount() {
+        if(remainingAmount < 6000){
+            remainingAmount = remainingAmount - remainingAmount;
+        }
         return remainingAmount;
     }
 }
