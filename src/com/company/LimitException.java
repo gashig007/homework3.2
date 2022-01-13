@@ -10,7 +10,7 @@ public class LimitException extends Exception{
 
 
 
-    public Double getRemainingAmount() {
+    public double getRemainingAmount() {
         return remainingAmount;
     }
 

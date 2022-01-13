@@ -17,7 +17,7 @@ public class Main {
             }catch (LimitException limitException){
                 System.out.println(limitException.getMessage());
                 try {
-                    bankAccount.withDraw((int) limitException.getRemainingAmount());
+                    bankAccount.withDraw((int) (limitException.getRemainingAmount()));
                 } catch (LimitException e) {
                     e.printStackTrace();
                 }
