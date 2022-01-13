@@ -1,17 +1,20 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Main {
 
-    public static void main(String[] args) {
-        Boolean remainder = false;
+    public static void main(String[] args){
         BankAccount bankAccount = new BankAccount();
         bankAccount.deposit(20000);
-        while (true) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true){
             try {
-                System.out.println("Ваш счет " + bankAccount.getAmount());
-                bankAccount.withDraw(6000);
-            } catch (LimitException limitException) {
-                System.out.println("Ваш счет: " + bankAccount.getAmount());
+                System.out.print("Напишите сумму вывода: ");
+                bankAccount.withDraw(scanner.nextInt());
+
+            }catch (LimitException limitException){
                 System.out.println(limitException.getMessage());
                 try {
                     bankAccount.withDraw((int) limitException.getRemainingAmount());
