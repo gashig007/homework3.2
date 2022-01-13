@@ -12,10 +12,13 @@ public class Main {
                 bankAccount.withDraw(6000);
             } catch (LimitException limitException) {
                 System.out.println("Ваш счет: " + bankAccount.getAmount());
-                if (bankAccount.getAmount() < 6000) {
-                    System.out.println("Ваш счет: " + limitException.getRemainingAmount());
-                    break;
+                System.out.println(limitException.getMessage());
+                try {
+                    bankAccount.withDraw((int) limitException.getRemainingAmount());
+                } catch (LimitException e) {
+                    e.printStackTrace();
                 }
+                break;
             }
         }
     }
